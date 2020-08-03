@@ -24,7 +24,7 @@ describe("Gelato-Kyber Demo Part 1: Step 2", function () {
   let proxyIsDeployedAlready;
   let myUserProxyAddress;
   let myUserProxy;
-  const CREATE_2_SALT = 42069; // for create2 and address prediction
+  const CREATE_2_SALT = 123456789; // for create2 and address prediction
 
   const defaultExecutor = bre.network.config.addressBook.gelatoExecutor.default;
   const gelatoUserProxyProviderModule =

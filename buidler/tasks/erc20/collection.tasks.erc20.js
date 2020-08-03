@@ -1,6 +1,7 @@
 // ============= ERC20 ============================
 import "./task.erc20-allowance";
 import "./task.erc20-approve";
+import "./task.erc20-transfer";
 import "./task.erc20-balance";
 import "./task.dai-rinkeby-faucet";
 
@@ -10,6 +11,9 @@ import "./sub_tasks/sTask.erc20.allowance";
 
 // erc20:approve
 import "./sub_tasks/sTask.erc20.approve";
+
+// erc20:transfer
+import "./sub_tasks/sTask.erc20.transfer";
 
 // erc20:balance
 import "./sub_tasks/sTask.erc20.balance";

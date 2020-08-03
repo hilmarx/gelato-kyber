@@ -28,7 +28,7 @@ describe("Gelato-Kyber Demo Part 1: Step 1", function () {
   //  one, we will use that one.
   let proxyIsDeployedAlready;
   let myUserProxyAddress;
-  const CREATE_2_SALT = 42069; // for create2 and address prediction
+  const CREATE_2_SALT = 123456789; // for create2 and address prediction
 
   before(async function () {
     // We get our User Wallet from the Buidler Runtime Env

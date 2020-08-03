@@ -42,16 +42,7 @@ export default task(
 
       if (taskArgs.log) console.log("\n deploy taskArgs:", taskArgs, "\n");
 
-      let deployer;
-      if (taskArgs.signerindex && taskArgs.signer)
-        throw Error("Can't have both signer and signer index");
-      if (!taskArgs.signerindex && !taskArgs.signer)
-        [deployer] = await ethers.getSigners();
-      if (taskArgs.signerindex && !taskArgs.signer) {
-        const { [taskArgs.signerindex]: _deployer } = await ethers.getSigners();
-        deployer = _deployer;
-      }
-      if (!taskArgs.signerindex && taskArgs.signer) deployer = taskArgs.signer;
+      let [deployer] = await ethers.getSigners();
 
       if (networkname == "mainnet") {
         console.log(

@@ -26,7 +26,7 @@ module.exports = {
       accounts: [USER_PK, PROVIDER_PK],
       chainId: 4,
       // gas: 4000000,  // 4 million
-      // gasPrice: "auto",
+      gasPrice: parseInt(utils.parseUnits("8", "gwei")),
       url: `https://rinkeby.infura.io/v3/${INFURA_ID}`,
       // Custom
       // Rinkeby: addressBook
@@ -35,13 +35,22 @@ module.exports = {
         erc20: {
           DAI: "0x5592EC0cfb4dbc12D3aB100b257153436a1f0FEa",
           "0x5592EC0cfb4dbc12D3aB100b257153436a1f0FEa": "DAI",
-          KNC: "0x6FA355a7b6bD2D6bD8b927C489221BFBb6f1D7B2",
-          "0x6FA355a7b6bD2D6bD8b927C489221BFBb6f1D7B2": "KNC",
+          AMPL: "0x5592EC0cfb4dbc12D3aB100b257153436a1f0FEa", // WE take KNC balance for now
+          "0x5592EC0cfb4dbc12D3aB100b257153436a1f0FEa": "AMPL",
+          KNC: "0x6fa355a7b6bd2d6bd8b927c489221bfbb6f1d7b2",
+          "0x6fa355a7b6bd2d6bd8b927c489221bfbb6f1d7b2": "KNC",
+          WETH: "0xc778417e063141139fce010982780140aa0cd5ab",
+          "0xc778417e063141139fce010982780140aa0cd5ab": "WETH",
         },
 
         // Rinkeby: Gelato
         gelatoExecutor: {
           default: "0xa5A98a6AD379C7B578bD85E35A3eC28AD72A336b", // PermissionedExecutors
+        },
+
+        uniswapV2: {
+          router02: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+          factory: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
         },
 
         // Rinkeby: Kyber
@@ -56,15 +65,23 @@ module.exports = {
         // === Actions ===
         // Kyber
         "ActionKyberTrade",
+        // Return balance
+        "ActionReturnBalance",
+        // Gelato
+        "ActionSubmitTaskInFuture",
+        // Uniswap
+        "ActionUniswapV2Trade",
         // Provider
-        "FeeHandlerFactory",
         // === Conditions ===
-        // Time
-        "ConditionTimeStateful",
+        "ConditionFragmentsSupply",
+        "ConditionKyberRateStateful",
+        "ConditionUniswapV2RateStateful",
         // === GelatoCore ===
         "GelatoCore",
         // === ProviderModules ===
         "ProviderModuleGelatoUserProxy",
+        // === Mocks ===
+        "MockUFragments",
       ],
 
       // Rinkeby: Deployments
@@ -72,13 +89,22 @@ module.exports = {
         // ==== Actions ====
         // Kyber
         ActionKyberTrade: "0xe2B2f27D674F49fB3d67D6D21F5d85EFe2B95635",
+        // Return Balance
+        ActionReturnBalance: "0x1Ce2299d2191d83E0d948767ef5a3E9Daf645539",
         // Transfer
         ActionTransfer: "0x783bD05d52B02811dECC8960aBF38A56c9Fb5F9B",
-        // Provider
-        FeeHandlerFactory: "0x6988f5c52E0b6Bdcf6d0223e65a4C49F0c2cb1F8",
+        // GelatoCore
+        ActionSubmitTaskInFuture: "0xa1c10b6D366577FEdbfC6d9C37CCE279c9F4cf34",
+        // Uniswap v2 action
+        ActionUniswapV2Trade: "0xB7f8f5C419B0033EfEf40A1F9D74918f0ddeEF1B",
+
         // ==== Conditions ====
-        // Time
-        ConditionTimeStateful: "0xcA560E4399399016d897983206aB591CAD19169C",
+        ConditionFragmentsSupply: "0x1FfE1F8ef11cc966FEFD4A3195C3109307E2c58d",
+        ConditionKyberRateStateful:
+          "0x6eAa5330979cD3f838D317a275eF82bF15C61837",
+        ConditionUniswapV2RateStateful:
+          "0x7e4CAeA126f9F7b22D3D42Ecf3Cb23cB730D6FAD",
+
         // ===== Gelato Core ====
         GelatoCore: "0x733aDEf4f8346FD96107d8d6605eA9ab5645d632",
         // === GelatoUserProxies ===
@@ -86,6 +112,8 @@ module.exports = {
         // ===== Provider Modules ====
         ProviderModuleGelatoUserProxy:
           "0x66a35534126B4B0845A2aa03825b95dFaaE88B0C",
+        // === Mocks ===
+        MockUFragments: "0x5a52a707747B6B902a82a0D77f06117d54933716",
       },
 
       // Rinkeby: Filters
@@ -201,3 +229,6 @@ require("./buidler/tasks/gelato/core/collection.tasks.gelato-core");
 // ======================== INTERNAL HELPER TASKS ======================================
 // encoding, naming ....
 require("./buidler/tasks/internal/collection.internalTasks");
+
+// Mocks
+require("./buidler/tasks/mocks/collection.tasks.mocks.js");

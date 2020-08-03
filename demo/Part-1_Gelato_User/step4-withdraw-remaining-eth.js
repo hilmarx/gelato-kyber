@@ -27,7 +27,7 @@ describe("Gelato-Kyber Demo Part 1: Step 4", function () {
   let proxyIsDeployedAlready;
   let myUserProxyAddress;
   let myUserProxy;
-  const CREATE_2_SALT = 42069; // for create2 and address prediction
+  const CREATE_2_SALT = 123456789; // for create2 and address prediction
 
   // We deposit 1 ETH to Gelato, so that we have a sufficient balance for Task executions
   const ETH_ADDRESS = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";

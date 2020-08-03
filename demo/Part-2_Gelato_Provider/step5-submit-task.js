@@ -12,7 +12,7 @@ describe("Gelato-Kyber Demo Part 2: Step 5", function () {
   // No timeout for Mocha due to Rinkeby mining latency
   this.timeout(0);
 
-  const CREATE_2_SALT = 42069; // for create2 and address prediction
+  const CREATE_2_SALT = 123456789; // for create2 and address prediction
   const gelatoUserProxyFactorAddress =
     bre.network.config.deployments.GelatoUserProxyFactory;
 

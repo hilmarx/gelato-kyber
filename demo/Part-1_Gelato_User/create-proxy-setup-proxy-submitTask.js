@@ -33,7 +33,7 @@ describe("Gelato-Kyber Demo Part 1: All in one Tx: Create proxy, do setup and su
   //  one, we will use that one.
   let proxyIsDeployedAlready;
   let myUserProxy;
-  const CREATE_2_SALT = 42069; // for create2 and address prediction
+  const CREATE_2_SALT = 123456789; // for create2 and address prediction
 
   const estimatedGasPerExecution = ethers.utils.bigNumberify("500000");
 

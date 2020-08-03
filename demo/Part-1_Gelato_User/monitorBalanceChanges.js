@@ -17,7 +17,7 @@ async function logBalances() {
   try {
     // const DAI = bre.network.config.addressBook.erc20.DAI;
     // const KNC = bre.network.config.addressBook.erc20.KNC;
-    const CREATE_2_SALT = 42069; // for create2 and address prediction
+    const CREATE_2_SALT = 123456789; // for create2 and address prediction
 
     // We get our User Wallet from the Buidler Runtime Env
     myUserWallet = await bre.getUserWallet();

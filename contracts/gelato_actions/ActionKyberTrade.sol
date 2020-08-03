@@ -2,13 +2,13 @@
 pragma solidity ^0.6.10;
 
 import {GelatoActionsStandard} from "@gelatonetwork/core/contracts/actions/GelatoActionsStandard.sol";
-import {IGelatoInFlowAction} from "@gelatonetwork/core/contracts/actions/action_interfaces/IGelatoInFlowAction.sol";
+import {IGelatoInFlowAction} from "@gelatonetwork/core/contracts/actions/action_pipeline_interfaces/IGelatoInFlowAction.sol";
 import {DataFlow} from "@gelatonetwork/core/contracts/gelato_core/interfaces/IGelatoCore.sol";
 import {GelatoBytes} from "@gelatonetwork/core/contracts/libraries/GelatoBytes.sol";
 import {SafeERC20} from "@gelatonetwork/core/contracts/external/SafeERC20.sol";
 import {SafeMath} from "@gelatonetwork/core/contracts/external/SafeMath.sol";
 import {IERC20} from "@gelatonetwork/core/contracts/external/IERC20.sol";
-import {IKyberNetworkProxy} from "./dapp_interfaces/IKyberNetworkProxy.sol";
+import {IKyberNetworkProxy} from "../dapp_interfaces/IKyberNetworkProxy.sol";
 
 contract ActionKyberTrade is GelatoActionsStandard, IGelatoInFlowAction {
     using SafeMath for uint256;
